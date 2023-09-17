@@ -180,7 +180,7 @@ $path='http://localhost/phpproject-code/notebook1project/';
   <main  id="bg1" >
     <div id="d1" >
     <div id="p11">
-         <p>Welcome to MY NOOTBOOK</p>
+         <p>Welcome to MY NOOT</p>
     </div>
     <div id="p2">
          <p>Carry a notebook and write down things to do, and write out thoughts and stuff like that.</p>
