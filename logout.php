@@ -1,0 +1,11 @@
+<?php
+session_start();
+unset($_SESSION["id"]);
+unset($_SESSION["fname"]);
+unset($_SESSION["lname"]);
+unset($_SESSION["username"]);
+unset($_SESSION["phone_number"]);
+unset($_SESSION["email"]);
+unset($_SESSION["passwordd"]);
+header('location:indexhome.php');
+?>
