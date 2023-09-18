@@ -3,7 +3,7 @@ $path='http://localhost/phpproject-code/notebook1project/';
 ?>
 
  <!-- <script src="<?=$path?>Scripts/popper.min.js" crossorigin="anonymous"></script>-->
- <script src="<?=$path?>bootnew/Scripts/jquery-3.0.0.js" crossorigin="anonymous"></script>
+ <script src="<?=$path?>Scripts/jquery-3.0.0.js" crossorigin="anonymous"></script>
     <script src="<?=$path?>bootnew/Scripts/jquery-3.0.0.min.js" crossorigin="anonymous"></script>
     <script src="<?=$path?>Scripts/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="<?=$path?>Scripts/bootstrap.js" crossorigin="anonymous"></script>

@@ -104,8 +104,8 @@ $path='http://localhost/phpproject-code/notebook1project/';
   #bg2{
     background-color: white;
     border-radius: 10px;
-    width: 600px;
-    height: 500px;
+    width: 550px;
+    height: 450px;
     text-align:center;
     box-shadow: 2px 3px 5px orchid;
     display: inline-block;
@@ -124,7 +124,7 @@ $path='http://localhost/phpproject-code/notebook1project/';
     font-weight: 600px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: orchid;
-    margin-top: 20px;
+    margin-top: 15px;
   }
   input{
     width: 60%;
@@ -148,7 +148,7 @@ $path='http://localhost/phpproject-code/notebook1project/';
       box-shadow: 2px 2px 3px orchid;
       border-radius: 10px;
       transition: all .7s ease-in-out; 
-      margin-top: 25px;
+      margin-top: 15px;
       color: white;
     }
     button:hover{
@@ -167,12 +167,14 @@ $path='http://localhost/phpproject-code/notebook1project/';
     .fa{
       color:DarkSlateBlue ;
       position: absolute;
-      right:15px;
+      display: flex;
+      left:250px;
       font-size: 20px;
       cursor: pointer;
+      align-items: center;
+      justify-content: center;
     }
-  
-
+ 
     /*sign up style*/
 
   </style>
@@ -186,8 +188,8 @@ $path='http://localhost/phpproject-code/notebook1project/';
          <p>Carry a notebook and write down things to do, and write out thoughts and stuff like that.</p>
     </div>
     <div id="b1">
-         <button type="button" class="btn-log text-white" data-toggle="modal" data-target="#modallog">LOGIN</button>
-         <button type="button" >SIGN UP</button>
+         <button type="button" class="btn-log text-white h4 p-3" data-toggle="modal" data-target="#modallog">LOGIN</button>
+         <button type="button" class="btn-log text-white h4 p-3" >SIGN UP</button>
     </div>
     </div>
   </main>
@@ -198,15 +200,15 @@ $path='http://localhost/phpproject-code/notebook1project/';
   <main id="mainlog" class="dialog" role="document">
       <div id="bg2" class="modal-content col-lg-12" >
         <div  class="modal-header col-lg-12" >
-        <div id="p4"  class="modal-title col-lg-12" id="modallogged">
+        <div id="p4"  class="modal-title col-lg-12 m-0 p-0" id="modallogged">
           <p  id="p3">
             Login
           </p>
         </div>
         <div>
-        <button type="button" class="close col-lg-12" data-dismiss="modal" aria-label="Close">
-         <i class="fa fa-window-close" aria-hidden="true"></i>
-        </button>
+
+         <i  class="fa fa-window-close  col-lg-12" data-dismiss="modal" aria-label="Close" ></i>
+    
         </div>
         </div>
 
@@ -224,7 +226,7 @@ $path='http://localhost/phpproject-code/notebook1project/';
 
 
         <div class="modal-footer col-lg-12">
-        <div class="col-lg-12"  style='display:flex;justify-content: center;align-items:center;margin-top:-35px'>
+        <div class="col-lg-12"  style='display:flex;justify-content: center;align-items:center;margin-top:-60px'>
         <h3 class="col-lg-6"  style='color:DarkSlateBlue;font-size:15px;padding:5px'>You are not registered?</h3>
         <p class='link col-lg-6' style='color:DarkSlateBlue;font-size:15px;padding:5px;margin-top:7px'>Click here to <a href="<?=$path?>signup.php" style='color:blue'>Sign Up</a></p>  
         </div>
