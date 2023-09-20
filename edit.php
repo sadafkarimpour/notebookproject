@@ -40,8 +40,8 @@ $path='http://localhost/phpproject-code/notebook1project/';
             text-align: center;
             margin: auto;
             padding: 10px;
-            margin-top:50px;
-            display: inline-flex;
+            margin-top:80px;
+            display: inline-block;
             justify-content: center;
             margin-left: 250px;
         
@@ -57,24 +57,17 @@ $path='http://localhost/phpproject-code/notebook1project/';
         transform: scale(1.1); 
         color: darkslateblue;
        }
-       #bars{
-        color: cornflowerblue;
-        font-size: 30px;
-       
-        transition: all .2s ease-in-out; 
+       #topmenu{
+        width:100%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
        }
-       #bars:hover{
-        transform: scale(1.1); 
-        color: darkslateblue;
-       }
-       #plus{
-        color: cornflowerblue;
-        font-size: 30px;
-        transition: all .2s ease-in-out; 
-       }
-       #plus:hover{
-        transform: scale(1.1); 
-        color: darkslateblue;
+       #topmain{
+        width:100%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
        }
        #main{
         width: 100%;
@@ -84,14 +77,7 @@ $path='http://localhost/phpproject-code/notebook1project/';
         display: inline-block;
         justify-content: center;
        }
-       #menu{
-          width: 100%;
-         
-          height: 50px;
-          padding-bottom:10px;
-          
-          justify-content: center;
-       }
+   
        #date{
         display: inline-flex;
         justify-content: center;
@@ -176,7 +162,7 @@ $path='http://localhost/phpproject-code/notebook1project/';
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         font-size: 25px;
         background-color:cornflowerblue ;
-        margin-top: 30px;
+      
         width: 100%;
         padding: 10px;
         align-content: center;
@@ -185,51 +171,7 @@ $path='http://localhost/phpproject-code/notebook1project/';
 
 
      }
-     #d5 ul{
-    display: inline-flex;
-    list-style-type: none;
-   }
   
-   
-    #d5 ul li{
-        display: block;
-        position: relative;
-    }
-    #d5 ul li a{
-        display: block;
-        text-decoration: none;
-        text-align: center;
-
-    }
-    #d5 ul li #dropdown{
-        display:none;
-        width: 170px;
-        
-    }
-    #d5 ul li:hover #dropdown {
-        display: block;
-        position:absolute;
-        background-color: cornflowerblue ;
-     
-     }
-     #d5 ul li:hover #dropdown li {
-        padding:10px;
-        margin: 5px 0px;
-        margin-left: -38px;
-       
-    }
-    #d5 ul li:hover #dropdown li a{
-        color: white;
-        text-align: center;
-        content: center;
-        justify-content: center;
-       
-    }
-    #d5 ul li:hover #dropdown li:hover{
-       background-color: darkslateblue;
-       width: 150px;
-       margin-left: -30px;
-    }
 
     #button{
         display: inline-flex
@@ -243,33 +185,17 @@ $path='http://localhost/phpproject-code/notebook1project/';
     <div>
         <main>
             <form  method="POST" action="update.php?id=<?php echo $id; ?>">
+            <div id="topmenu">
+            <h1 id="notes">ویرایش</h1>
+            </div>
+            <div id="topmain">
             <div class="col-6" id="photo">
-            <div id="menu">
-            <div class="col-4" id="d5">
-                <ul >
-                    <li>
-                    <a id="bars" title="منو" ><i class="fa fa-bars" aria-hidden="true"></i></a>
-                    <ul id="dropdown">
-                        <li >
-                            <a  href="<?=$path?>noteindex.php">یادداشت‌ها</a>
-                        </li>
-                        <li>
-                            <a   href="<?=$path?>noteaddnew.php">یادداشت جدید</a>
-
-                        </li>
-                    </ul>
-                    </li>
-                   <li> <h1 id="h1">MyNoteBook</h1></li>
-                   <li><a href="<?=$path?>noteaddnew.php" id="plus" title="یادداشت جدید" ><i class="fa fa-plus-circle" aria-hidden="true" ></i></a></li>
-                </ul>
-                   
-                </div>
-                </div>
+            
                    <img  src="<?=$path?>hand-holding-pen-concept-illustration.jpg/6665864.jpg" alt="">
                 </div>
    
                 <div  class="col-6">
-                    <h1 id="notes">ویرایش</h1>
+                  
            <div id="main">
                <div >
                     <input id="title" type="text" placeholder="عنوان یادداشت" name="data[title]" value="<?php echo $row['title']; ?>">
@@ -285,7 +211,7 @@ $path='http://localhost/phpproject-code/notebook1project/';
                </div>
                </div>
             </div>
-           
+            </div>
             </form>
         </main>
     </div>

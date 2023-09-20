@@ -110,12 +110,9 @@ if(isset($_POST['signup'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
     <?php include 'head.php' ?>
-
 </head>
 <body>
- <header>
-    <?php include 'menu.php'; ?> 
-  </header>
+
 
   <style>
         main{
@@ -186,35 +183,8 @@ if(isset($_POST['signup'])){
     #a1{
       color:black;
     }
-  
-    #sign2{
-      width: 300px;
-      height: 100px;
-      display: inline-block;
-      align-items: center;
-      justify-content: center;
-      position: fixed;
-      top:50px;
-     left:600px;
-      background-color: white;
-      padding: 10px;
-      padding-top: 20px;
-
-    }
-    #sign2 h5{
-      color: green;
-    }
-    #sign2 h6{
-      color: black;
-    }
-   
-
   </style>
-
-
-
-
-  <form  method="POST" action="" autocomplete="off" >
+  <form  method="POST" action="" autocomplete="off">
     <main>
       <div id="bg2">
         <div id="p4">
@@ -245,13 +215,12 @@ if(isset($_POST['signup'])){
           <input type="password" name="data[passwordd]" placeholder="Password"  id="pa2" autocomplete="off">
         </div>
         <div  id="b1">
-          <button type="submit" id="b2" class="btn-lg" name="signup" onclick="sendRequest2();">Sign Up</button>
+          <button type="submit" id="b2" class="btn-lg" name="signup">Sign Up</button>
         </div>
-        <div  style='display: flex;justify-content: center;align-items: center;'>
+        <div  style='display: flex;justify-content: center;align-items: center'>
         <h3 style='color:DarkSlateBlue;font-size:15px;padding:5px;'>Already signed up?</h3>
         <p class='link' style='color:DarkSlateBlue;font-size:15px;padding:5px;margin-top:10px'>Click here to <a href="<?=$path?>login.php" style='color:blue'>Login</a></p>  
         </div>
-     
       </div>
     </main>
 </form>

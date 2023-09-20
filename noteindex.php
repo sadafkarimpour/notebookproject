@@ -242,7 +242,7 @@ echo "table not created";
                             "</td><td>
                             <div class='btn-group'>
                            
-                            <a class='btn btn-light-blue' href='./edit.php?id=".$row['id']."'>ویرایش</a>
+                            <a class='btn btn-light-blue' id='editbut' href='./edit.php?id=".$row['id']."'>ویرایش</a>
                             <a class='btn btn-danger' href='./delete.php?id=".$row['id']."'>حذف</a>
                             
                             </div>
@@ -287,6 +287,44 @@ echo "table not created";
                  </div>
             </form>
         </main>
-    </div>
+
+            <!--edit-->
+       
+            <form  method="POST" action="update.php?id=<?php echo $id; ?>" id="formedit">
+            <div id="topmenu">
+            <h1 id="notes">ویرایش</h1>
+            </div>
+            <div id="topmain">
+            <div class="col-6" id="photo">
+            
+                   <img  src="<?=$path?>hand-holding-pen-concept-illustration.jpg/6665864.jpg" alt="">
+                </div>
+   
+                <div  class="col-6">
+                  
+           <div id="main">
+               <div >
+                    <input id="title" type="text" placeholder="عنوان یادداشت" name="data[title]" value="<?php echo $row['title']; ?>">
+               </div>
+               <div >
+                    <input id="note" type="text" placeholder="متن یادداشت" name="data[note]" value="<?php echo $row['note']; ?>">
+               </div>
+              
+               <div id="button">
+                <button id="save" class="btn btn-light-blue" type="submit" name="change">تغییر</button>
+              
+                <button id="save" class="btn btn-light-blue" type="submit" name="back" ><a  href="<?=$path?>noteindex.php">انصراف</a></button>
+               </div>
+               </div>
+            </div>
+            </div>
+            </form>
+           </div>
+  <script>
+    $("#formedit").hide();
+    $("#editbut").on('click',function(){
+        $("#formedit").show();
+    });
+  </script>
 </body>
 </html>

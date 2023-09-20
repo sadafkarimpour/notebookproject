@@ -65,11 +65,8 @@ if(isset($_POST['login'])){
     <?php include 'head.php' ?>
 </head>
 <body>
-
-<header>
-<?php 
-include 'menu.php'
-?>
+  <header>
+    <?php include 'menu.php'; ?>
 </header>
   <style>
         main{

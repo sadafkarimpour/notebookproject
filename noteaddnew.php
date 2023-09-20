@@ -166,6 +166,7 @@ $path='http://localhost/phpproject-code/notebook1project/';
         background-color: cornflowerblue;
         color:darkblue;
        }
+    
        textarea:focus{
         border: none;
         border: 2px solid cornflowerblue ;
@@ -200,9 +201,163 @@ $path='http://localhost/phpproject-code/notebook1project/';
     #button a{
         color:white;
     }
+
+    /* edit */
+    body{
+        background-color: cornflowerblue;
+       }
+        #formedit{
+            background-color: white;
+            width: 70%;
+            height:620px;
+            border-radius: 10px;
+            align-content: center;
+            text-align: center;
+            margin: auto;
+            padding: 10px;
+            margin-top:80px;
+            display: inline-block;
+            justify-content: center;
+            margin-left: 250px;
+        
+        }
+        #h1{
+        color: cornflowerblue;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 22px;
+        margin:10px 100px;
+        transition: all .2s ease-in-out; 
+       }
+       #h1:hover{
+        transform: scale(1.1); 
+        color: darkslateblue;
+       }
+       #topmenu{
+        width:100%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+       }
+       #topmain{
+        width:100%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+       }
+       #main{
+        width: 100%;
+        border: 1px solid cornflowerblue;
+        height: 500px;
+        padding-bottom:10px;
+        display: inline-block;
+        justify-content: center;
+       }
+   
+       #date{
+        display: inline-flex;
+        justify-content: center;
+        margin-top: 20px;
+        border: none;
+        margin-bottom: 10px;
+        width: 100%;
+       }
+       #date1{
+        padding: 10px 30px;
+        border:none;
+        border: 1px solid cornflowerblue;
+        width: 100%;
+        margin-left: 30px;
+       }
+       #p1{
+        color: cornflowerblue;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 18px;
+        margin:10px 50px;
+        width: 100%;
+        margin-left: 10px;
+        margin-right: 20px;
+      
+       }
+       #title{
+        width:87%;
+        height: 50px;
+        border: none;
+        border: 2px solid cornflowerblue ;
+        margin: 20px;
+        margin-bottom: 0px ;
+        text-align: right;
+       }
+       #title::placeholder{
+        text-align: right;
+       }
+       #note{
+        
+        width:87%;
+        height: 360px;
+        border: none;
+        border: 2px solid cornflowerblue ;
+        margin:0px 20px;
+        padding-bottom: 250px;
+        text-align: right;
+       
+        
+       }
+       #note::placeholder{
+        text-align: right;
+        
+       }
+       #save{
+        width: 150px;
+        color:cornflowerblue ;
+        border: 2px solid cornflowerblue ;
+        font-size: 17px;
+       }
+       #save:hover{
+        background-color: cornflowerblue;
+        color:darkblue;
+       }
+       #h4{
+        color: cornflowerblue;
+        border: none;
+        border-bottom: 1px solid cornflowerblue;
+        border-radius: 10px;
+        padding-bottom: 10px;
+       }
+       #photo{
+        width: 100%;
+        height: 500px;
+        padding-top: 30px;
+     }
+     img{
+        width: 100%;
+        height: 500px;
+     }
+     #notes{
+        color: white;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 25px;
+        background-color:cornflowerblue ;
+      
+        width: 100%;
+        padding: 10px;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+
+
+     }
+  
+
+    #button{
+        display: inline-flex
+    }
+    
+    #button a{
+        color:white;
+    }
     </style>
         <main>
-            <form  method="POST" action="">
+            <form  method="POST" action="" id="formnote">
                 <div id="top">
                 <h1 id="notes">یادداشت جدید</h1>
                 </div>
@@ -235,6 +390,6 @@ $path='http://localhost/phpproject-code/notebook1project/';
         </main>
     
 
-  
+
 </body>
 </html>
