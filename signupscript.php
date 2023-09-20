@@ -36,23 +36,13 @@ $connect=mysqli_connect($servername, $username, $password, $db_name);
 if (!$connect) {
     die ("Connection Error!".mysqli_connect_error());
 }
-
-if(isset($_POST['signup'])){
-  $data=$_POST['data'];
-  if(empty($data['fname'])||empty($data['lname'])||empty($data['username'])||empty($data['phone-number'])||empty($data['email'])||empty($data['passwordd'])){
-    echo "
-    <div class='form'  style='padding-top:50px;margin-bottom:-70px;display: flex;justify-content: center;align-items: center;'>
-    <h3 style='color:white;font-size:15px;padding:5px'>Required fields are missing.</h3>
-    </div>
-";
-  }
-  else{
-    $fname=$data['fname'];
-    $lname=$data['lname'];
-    $username=$data['username'];
-    $phonenum=$data['phone-number'];
-    $email=$data['email'];
-    $passwordd=$data['passwordd'];
+if($_POST['type']==1){
+$fname=$_POST['fname'];
+$lname=$_POST['lname'];
+$username=$_POST['username'];
+$phonenum=$_POST['phone-number'];
+$email=$_POST['email'];
+$passwordd=$_POST['passwordd'];
     $que=mysqli_query($connect,"SELECT * FROM `signupnote` WHERE email='$email'");
     if(mysqli_num_rows($que)>0){
       echo "
@@ -99,5 +89,4 @@ if(isset($_POST['signup'])){
 
   }
 
-  }
 ?>

@@ -455,6 +455,7 @@ $(document).ready(function() {
           url:"<?=$path?>signupscript.php",
           type:"POST",
           data:{
+            type:1,
             fname: fname,
             lname:lname,
             username:username,
