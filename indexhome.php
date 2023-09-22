@@ -406,7 +406,7 @@ function sendRequest()
           <input type="password" name="data[passwordd]" placeholder="Password"  id="spa2" autocomplete="off">
         </div>
         <div  id="sb1">
-          <button type="submit" id="sb2" class="btn-lg" name="signup" >Sign Up</button>
+          <button type="button" id="sb2" class="btn-lg" name="signup" >Sign Up</button>
         </div>
         <div  style='display: flex;justify-content: center;align-items: center'>
         <h3 style='color:DarkSlateBlue;font-size:15px;padding:5px;'>Already signed up?</h3>
@@ -455,7 +455,6 @@ $(document).ready(function() {
           url:"<?=$path?>signupscript.php",
           type:"POST",
           data:{
-            type:1,
             fname: fname,
             lname:lname,
             username:username,
@@ -468,7 +467,7 @@ $(document).ready(function() {
 					var dataResult = JSON.parse(dataResult);
 					if(dataResult.statusCode==200){
             $('#sb2').removeAttr("disabled");
-					//	$('#signform').find('input:text').val('');
+					$('#signform').find('input:text').val('');
 						$("#success").show();
 						$('#success').html('Registration successful !'); 
 
@@ -516,7 +515,9 @@ $(document).ready(function() {
 			});
 		}
 		else{
+      
 			alert('Please fill all the field !');
+     
 		}
     });
   

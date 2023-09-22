@@ -36,7 +36,7 @@ $connect=mysqli_connect($servername, $username, $password, $db_name);
 if (!$connect) {
     die ("Connection Error!".mysqli_connect_error());
 }
-if($_POST['type']==1){
+
 $fname=$_POST['fname'];
 $lname=$_POST['lname'];
 $username=$_POST['username'];
@@ -87,6 +87,6 @@ $passwordd=$_POST['passwordd'];
     }
 
 
-  }
+  
 
 ?>

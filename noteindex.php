@@ -40,7 +40,18 @@ echo "table not created";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notebook</title>
-    <?php include 'head.php' ?>
+     <!-- <script src="<?=$path?>Scripts/popper.min.js" crossorigin="anonymous"></script>-->
+ <script src="<?=$path?>Scripts/jquery-3.0.0.js" crossorigin="anonymous"></script>
+    <script src="<?=$path?>bootnew/Scripts/jquery-3.0.0.min.js" crossorigin="anonymous"></script>
+    <script src="<?=$path?>Scripts/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="<?=$path?>Scripts/bootstrap.js" crossorigin="anonymous"></script>
+   <!-- <script src="<?=$path?>Scripts/mbd.min.js" crossorigin="anonymous"></script>-->
+   <!-- <script src="<?=$path?>Scripts/mdb.min.js" crossorigin="anonymous"></script>-->
+<link rel="stylesheet" href="<?=$path?>font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="<?=$path?>font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?=$path?>Content/bootstrap.min.css">
+    <link rel="stylesheet" href="<?=$path?>Content/bootstrap.css">
+  
 
 
 </head>
@@ -241,8 +252,8 @@ echo "table not created";
                             echo "<tr><td>". $row["id"]  . "</td><td>". $row["datee"] . "</td><td>". $row["title"]  . "</td><td id='scroller'>".$row["note"] . 
                             "</td><td>
                             <div class='btn-group'>
-                           
-                            <a class='btn btn-light-blue' id='editbut' href='./edit.php?id=".$row['id']."'>ویرایش</a>
+                         
+                            <button class='btn btn-light-blue' id='editbut' onclick='editbut(<?php echo ?id=".$row['id']."?>)'>ویرایش</button>
                             <a class='btn btn-danger' href='./delete.php?id=".$row['id']."'>حذف</a>
                             
                             </div>
@@ -289,8 +300,8 @@ echo "table not created";
         </main>
 
             <!--edit-->
-       
-            <form  method="POST" action="update.php?id=<?php echo $id; ?>" id="formedit">
+
+            <form  method="POST" action="" id="formedit">
             <div id="topmenu">
             <h1 id="notes">ویرایش</h1>
             </div>
@@ -321,10 +332,40 @@ echo "table not created";
             </form>
            </div>
   <script>
-    $("#formedit").hide();
-    $("#editbut").on('click',function(){
+     $("#formedit").hide();
+    function editbut(NoteId){
+        $("#editbut").on('click',function(){
         $("#formedit").show();
-    });
+        let path="http://localhost/phpproject-code/notebook1project/edit.php";
+        let url=path+NoteId;
+        let n=$.ajax({
+            url:url,
+            type:"GET",
+            data:{
+                id:NoteId,
+            } , 
+            cache:false,
+            success: function(dataResult){
+               
+					var dataResult = JSON.parse(dataResult);
+					if(dataResult.statusCode==200){
+                        $("#formedit").show();
+						location.href = "noteindex.php";						
+					}
+					else if(dataResult.statusCode==201){
+						$("#error").show();
+						$('#error').html('Problem!');
+					}
+					
+				}
+            });
+                   
+         });
+  
+    }
+
+
+   
   </script>
 </body>
 </html>
