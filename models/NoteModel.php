@@ -1,6 +1,6 @@
 <?php 
 
-class NoteModal{
+class NoteModel{
     /**
      * شناسه یادداشت
      *

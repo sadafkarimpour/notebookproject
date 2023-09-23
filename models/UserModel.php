@@ -1,6 +1,6 @@
 <?php 
 
-class UserModal{
+class UserModel{
     /**
      * شناسه کاربر
      *
@@ -42,26 +42,27 @@ class UserModal{
     public static function insert($firstname,$lastname,$username,$email,$password)
     {
        
-    require_once "database.php";
-    $data=$_POST['data'];
-    $firstname=$data['fname'];
-    $lastname=$data['lname'];
-    $username=$data['username'];
-    $phonenum=$data['phone-number'];
-    $email=$data['email'];
-    $password=$data['passwordd'];
-    $sql="INSERT INTO `signupnote` ( `fname`, `lname`, `username`, `phone_number`, `email`, `passwordd`) VALUES ('$firstname','$lastname','$username','$phonenum','$email','$password')";
-    $result=mysqli_query($connect,$sql);
-    if($result){
-        echo json_encode(array("statusCode"=>200));
-      }
-      else{
-        echo json_encode(array("statusCode"=>201));
+        require_once "database.php";
+        $data=$_POST['data'];
+        $firstname=$data['fname'];
+        $lastname=$data['lname'];
+        $username=$data['username'];
+        $phonenum=$data['phone-number'];
+        $email=$data['email'];
+        $password=$data['passwordd'];
+        $sql="INSERT INTO `signupnote` ( `fname`, `lname`, `username`, `phone_number`, `email`, `passwordd`) VALUES ('$firstname','$lastname','$username','$phonenum','$email','$password')";
+        $result=mysqli_query($connect,$sql);
+        if($result){
+            echo json_encode(array("statusCode"=>200));
+        }
+        else{
+            echo json_encode(array("statusCode"=>201));
+        
+        }
     
-      }
- 
 
-}
+    }
+
     public static function update($id,$firstname,$lastname,$username,$email,$password):bool
     {
         return true;
