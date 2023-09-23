@@ -1,31 +1,71 @@
 <?php 
 
-class NoteModel
-{
-
+class NoteModal{
+    /**
+     * شناسه یادداشت
+     *
+     * @var int
+     */ 
     public $id;
+    /**
+     * عنوان یادداشت
+     *
+     * @var string
+     */
     public $title;
+      /**
+     * توضیحات یادداشت
+     *
+     * @var string
+     */
     public $description;
-    public $userId; 
-    public $datetimeCreated;
-    public $datetimeEdited;
+      /**
+     * شناسه کاربر
+     *
+     * @var string
+     */
+    public $user_id;
+      /**
+     * تاریخ ثبت یادداشت
+     *
+     * @var string
+     */
+    public $datetime_created;
+      /**
+     * تاریخ آپدیت یادداشت
+     *
+     * @var string
+     */
+    public $datetime_edited;
 
-    public static function find($userId)
+
+    public static function insert($title,$description,$user_id):bool
     {
-        $result = [];
-
-        for($i = 0; $i < 10; $i++){
-            $note = new NoteModel();
-            $note->id = $i+1;
-            $note->title = "Title-" . $i;
-            $note->description = "Description-" . $i;
-            $note->userId = 10;
-            $note->datetimeCreated = new Datetime();
-            $note->datetimeEdited = new Datetime();
-
-            $result[] = $note;
-        }
-
-        return $result;
+        return true;
     }
+    
+    public static function update($id,$title,$description):bool
+    {
+        
+        return true;
+    }
+    
+    public static function delete($id):bool
+    {
+        return true;
+    }
+    
+    public static function findone($id)
+    {
+        return true;
+    }
+    
+    public static function find($user_id)
+    {
+        return true;
+    }
+
+
 }
+
+?>
