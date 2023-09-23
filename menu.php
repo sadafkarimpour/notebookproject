@@ -13,7 +13,7 @@
                 <a href="<?php echo PATH."auth.php?action=login"?>" class="text-white  align-middle text-center">Login</a>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-1  align-middle text-center">
-                <a href="<?php echo PATH."logout.php"?>" class="text-white  align-middle text-center">Logout</a>
+                <a href="<?php echo PATH."auth.php?action=logout" ?>" class="text-white  align-middle text-center">Logout</a>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-1  align-middle text-center">
                 <a href="<?php echo PATH."auth.php?action=register" ?>" class="text-white  align-middle text-center">Register</a>

@@ -1,7 +1,17 @@
 <?php require_once "header.php";
-    require_once "database.php" ?>
+    require_once "database.php"; 
+   
+    ?>
 
 <center>
+
+
+<div class='alert alert-success alert-dismissible' id='success' style='display:none;margin-top:50px'>
+	  <a href='#' class='close' data-dismiss='alert' aria-label='close'>×</a>
+	</div>
+	<div class='alert alert-danger alert-dismissible' id='error' style='display:none;margin-top:50px'>
+	  <a href='#' class='close' data-dismiss='alert' aria-label='close'>×</a>
+	</div>
 <form  method='POST' action='' autocomplete='off' id='signform'>
     <main>
         <div class=' w-50  bg-dark text-white rounded' style='margin-top:100px;height:500px;padding-top:20px;'>
@@ -47,7 +57,7 @@
                         <h6 >Already signed up?</h6>
                     </div>
                     <div class='col-lg-6 col-md-3 col-sm-1 ' >
-                        <p >Click here to <a href='<?php echo PATH ?>login.php'>Login</a></p>  
+                        <p >Click here to <a href='<?php echo PATH ?>authlogin.php'>Login</a></p>  
                     </div>
                 </div>
             </div>

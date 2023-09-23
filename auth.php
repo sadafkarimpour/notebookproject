@@ -51,6 +51,18 @@ function login(){
  * @return void
  */
 function doLogin(){
+    $email= $_POST['email'];
+    $passwordd= $_POST['passwordd'];
+    
+   
+    $result = new UserModel();
+    $result->login($email, $passwordd);
+  
+    // Prepare the response as a JSON object
+    $response = array("statusCode" => $result);
+  
+    // Return the response as a JSON string
+    echo json_encode($response);
 
 }
 
@@ -64,7 +76,17 @@ function doLogin(){
  * @return void
  */
 function logout(){
-
+    
+    session_start();
+    unset($_SESSION["id"]);
+    unset($_SESSION["fname"]);
+    unset($_SESSION["lname"]);
+    unset($_SESSION["username"]);
+    unset($_SESSION["phone_number"]);
+    unset($_SESSION["email"]);
+    unset($_SESSION["passwordd"]);
+    header('location:indexhome.php');
+    
 }
 
 // ----------------------------------------------------------------------------

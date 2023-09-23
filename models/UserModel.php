@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 class UserModel{
     /**
      * شناسه کاربر
@@ -50,7 +50,7 @@ class UserModel{
         $phonenum=$data['phone-number'];
         $email=$data['email'];
         $password=$data['passwordd'];
-        $sql="INSERT INTO `signupnote` ( `fname`, `lname`, `username`, `phone_number`, `email`, `passwordd`) VALUES ('$firstname','$lastname','$username','$phonenum','$email','$password')";
+        $sql="INSERT INTO `user` ( `fname`, `lname`, `username`, `phone_number`, `email`, `passwordd`) VALUES ('$firstname','$lastname','$username','$phonenum','$email','$password')";
         $result=mysqli_query($connect,$sql);
         if($result){
             echo json_encode(array("statusCode"=>200));
@@ -68,9 +68,33 @@ class UserModel{
         return true;
     }
     
-    public static function login($email,$password):bool
+    public static function login($email,$passwordd)
     {
-        return true;
+        require_once "database.php";
+        $email=$data['email'];
+        $passwordd=$data['passwordd'];
+        $sqlche= "SELECT * From  `user` WHERE email='$email' and passwordd='$passwordd'";
+        $check=mysqli_query($connect,$sqlche);
+        if(mysqli_num_rows($check)===1){
+            $row=mysqli_fetch_assoc($check);
+            if($row['email']=$email and $row['passwordd']=$passwordd){
+           
+              $_SESSION["id"]=$row["id"];
+              echo json_encode(array("statusCode"=>200));
+             
+              
+            }
+           else{
+            echo json_encode(array("statusCode"=>201));
+           }
+          
+        }
+        else
+        {
+           
+            echo json_encode(array("statusCode"=>201));
+        }
+    
     }
     
     public static function logout($id):bool
