@@ -4,29 +4,13 @@
 <center>
 <form  method='POST' action='' autocomplete='off' id='signform'>
     <main>
-        <div class=' w-50  bg-dark text-white rounded' style='margin-top:100px;height:500px;padding-top:20px;'>
+        <div class=' w-50  bg-dark text-white rounded' style='margin-top:100px;height:300px;padding-top:20px;'>
             <div class='container'>
                 <div class=' w-50 '>
                     <p  class='col-lg-12 col-md-6 col-sm-1 p-1 m-3'>
-                        Sign Up
+                    Login
                     </p>
                 </div>
-            </div>
-            
-            <div  class='row w-50 m-3'>
-                <input class='col-lg-12 col-md-6 col-sm-1  p-1 w-70 h-50 ' id='fname' type='text' name='data[fname]' placeholder='First Name'  autocomplete='off'>
-            </div>
-            
-            <div  class='row  w-50 m-3'>
-                <input class='col-lg-12 col-md-6 col-sm-1 p-1 w-70 h-50' id='lname' type='text' name='data[lname]' placeholder='Last Name'  autocomplete='off'>
-            </div>
-    
-            <div  class='row w-50 m-3'>
-                <input class='col-lg-12 col-md-6 col-sm-1 p-1 w-70 h-50' id='username'  type='text' name='data[username]' placeholder='Username'  autocomplete='off'>
-            </div>
-    
-            <div  class='row  w-50 m-3'>
-                <input class='col-lg-12 col-md-6 col-sm-1 p-1 w-70 h-50' id='phone-number'  type='text' name='data[phone-number]'' placeholder='Phone Number'  autocomplete='off'>
             </div>
     
             <div  class='row  w-50 m-3'>

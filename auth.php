@@ -37,6 +37,7 @@ function checkUserTable(){
  * @return void
  */
 function login(){
+    require_once "view/authlogin.php";
 
 }
 
@@ -93,7 +94,8 @@ function doRegister(){
     $email= $_POST['email'];
     $passwordd= $_POST['passwordd'];
   
-    $result = UserModel::insert($fname, $lname, $username, $email, $passwordd);
+    $result = new UserModel();
+    $result->insert($fname, $lname, $username, $email, $passwordd);
   
     // Prepare the response as a JSON object
     $response = array("statusCode" => $result);
