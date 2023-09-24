@@ -1,5 +1,5 @@
 <?php require_once "header.php";
-    require_once "database.php" ?>
+    require_once "database.php";?>
 
 <center>
 
@@ -39,7 +39,7 @@
                         <h6 >Not registered??</h6>
                     </div>
                     <div class='col-lg-6 col-md-3 col-sm-1 ' >
-                        <p >Click here to <a href='<?php echo PATH ?>authRegister.php'>Login</a></p>  
+                        <p >Click here to <a href='<?php echo PATH ?>auth.php?action=register'>Sign Up</a></p>  
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@ $('#loginbut').on('click',function(){
           type:"POST",
           data:{
             email:email,
-            paswordd:passwordd,
+            passwordd:passwordd,
           },
           cache:false,
           success: function(dataResult){

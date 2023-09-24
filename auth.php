@@ -1,7 +1,7 @@
 <?php
 
 require_once "models/UserModel.php";
-require_once "database.php";
+require "database.php";
 
 /**
  * check if 'user' table exists
@@ -51,6 +51,7 @@ function login(){
  * @return void
  */
 function doLogin(){
+    
     $email= $_POST['email'];
     $passwordd= $_POST['passwordd'];
     
@@ -110,14 +111,16 @@ function register(){
  * @return void
  */
 function doRegister(){
+   
     $fname= $_POST['fname'];
     $lname= $_POST['lname'];
     $username= $_POST['username'];
+    $phone_number=$_POST['phone_number'];
     $email= $_POST['email'];
     $passwordd= $_POST['passwordd'];
   
     $result = new UserModel();
-    $result->insert($fname, $lname, $username, $email, $passwordd);
+    $result->insert($fname, $lname, $username, $phone_number, $email, $passwordd);
   
     // Prepare the response as a JSON object
     $response = array("statusCode" => $result);

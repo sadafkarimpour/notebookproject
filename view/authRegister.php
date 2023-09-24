@@ -1,11 +1,8 @@
 <?php require_once "header.php";
-    require_once "database.php"; 
-   
+    require_once "database.php";
     ?>
 
 <center>
-
-
 <div class='alert alert-success alert-dismissible' id='success' style='display:none;margin-top:50px'>
 	  <a href='#' class='close' data-dismiss='alert' aria-label='close'>×</a>
 	</div>
@@ -36,7 +33,7 @@
             </div>
     
             <div  class='row  w-50 m-3'>
-                <input class='col-lg-12 col-md-6 col-sm-1 p-1 w-70 h-50' id='phone-number'  type='text' name='data[phone-number]'' placeholder='Phone Number'  autocomplete='off'>
+                <input class='col-lg-12 col-md-6 col-sm-1 p-1 w-70 h-50' id='phone-number'  type='text' name='data[phone-number]' placeholder='Phone Number'  autocomplete='off'>
             </div>
     
             <div  class='row  w-50 m-3'>
@@ -48,7 +45,7 @@
             </div>
     
             <div  class='row  w-50 m-3'>
-                <button class='col-lg-12 col-md-6 col-sm-1 p-1  btn btn-primary text-white'  type='button'  name='signup' id='signupbut' onclick='signUp();' >Sign Up</button>
+                <button class='col-lg-12 col-md-6 col-sm-1 p-1  btn btn-primary text-white'  type='button'  name='signup' id='signupbut' >Sign Up</button>
             </div>
     
             <div class='container '>
@@ -68,9 +65,9 @@
 </center>
 <script>
 
-function signUp(){
+$(document).ready(function(){
+    $("#signupbut").click(function(){
     $('#signupbut').attr('disabled','disables');
-
     var fname=$('#fname').val();
     var lname=$('#lname').val();
     var username=$('#username').val();
@@ -110,7 +107,8 @@ function signUp(){
             }
         }
     });
-}
+});
+});
 
 
 

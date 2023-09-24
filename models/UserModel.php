@@ -39,18 +39,12 @@ class UserModel{
     public $password;
 
 
-    public static function insert($firstname,$lastname,$username,$email,$password)
+    public static function insert($firstname,$lastname,$username,$phone_number,$email,$passwordd)
     {
        
         require_once "database.php";
-        $data=$_POST['data'];
-        $firstname=$data['fname'];
-        $lastname=$data['lname'];
-        $username=$data['username'];
-        $phonenum=$data['phone-number'];
-        $email=$data['email'];
-        $password=$data['passwordd'];
-        $sql="INSERT INTO `user` ( `fname`, `lname`, `username`, `phone_number`, `email`, `passwordd`) VALUES ('$firstname','$lastname','$username','$phonenum','$email','$password')";
+       
+        $sql="INSERT INTO `user` ( `fname`, `lname`, `username`, `phone_number`, `email`, `passwordd`) VALUES ('$firstname','$lastname','$username','$phone_number','$email','$passwordd')";
         $result=mysqli_query($connect,$sql);
         if($result){
             echo json_encode(array("statusCode"=>200));
@@ -71,8 +65,9 @@ class UserModel{
     public static function login($email,$passwordd)
     {
         require_once "database.php";
-        $email=$data['email'];
-        $passwordd=$data['passwordd'];
+       
+        $email=$_POST['email'];
+        $passwordd=$_POST['passwordd'];
         $sqlche= "SELECT * From  `user` WHERE email='$email' and passwordd='$passwordd'";
         $check=mysqli_query($connect,$sqlche);
         if(mysqli_num_rows($check)===1){

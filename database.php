@@ -12,7 +12,6 @@ $password="";
 $db_name="phpproject2";
 
 $connect = mysqli_connect($servername, $username, $password, $db_name);
-
 if (!$connect) {
     die ("Connection Error!".mysqli_connect_error());
 }
