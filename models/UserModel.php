@@ -41,20 +41,27 @@ class UserModel{
 
     public static function insert($firstname,$lastname,$username,$phone_number,$email,$passwordd)
     {
-       
-        require_once "database.php";
+        global $servername;
+        global $username;
+        global $password;
+        global $db_name;
+
+        $connect = mysqli_connect($servername, $username, $password, $db_name);
+        if (!$connect) {
+            die ("Connection Error!".mysqli_connect_error());
+        }
        
         $sql="INSERT INTO `user` ( `fname`, `lname`, `username`, `phone_number`, `email`, `passwordd`) VALUES ('$firstname','$lastname','$username','$phone_number','$email','$passwordd')";
+
+
         $result=mysqli_query($connect,$sql);
         if($result){
-            echo json_encode(array("statusCode"=>200));
+            return array("statusCode"=>200);
         }
         else{
-            echo json_encode(array("statusCode"=>201));
+            return array("statusCode"=>201);
         
         }
-    
-
     }
 
     public static function update($id,$firstname,$lastname,$username,$email,$password):bool
@@ -66,6 +73,15 @@ class UserModel{
     {
         require_once "database.php";
         session_start();
+        global $servername;
+        global $username;
+        global $password;
+        global $db_name;
+
+        $connect = mysqli_connect($servername, $username, $password, $db_name);
+        if (!$connect) {
+            die ("Connection Error!".mysqli_connect_error());
+        }
         $email=$_POST['email'];
         $passwordd=$_POST['passwordd'];
         $sqlche= "SELECT * From  `user` WHERE email='$email' and passwordd='$passwordd'";
@@ -75,19 +91,22 @@ class UserModel{
             if($row['email']=$email and $row['passwordd']=$passwordd){
            
               $_SESSION["id"]=$row["id"];
-              echo json_encode(array("statusCode"=>200));
+            //   echo json_encode(array("statusCode"=>200));
+            return true;
              
               
             }
            else{
-            echo json_encode(array("statusCode"=>201));
+            // echo json_encode(array("statusCode"=>201));
+            return false;
            }
           
         }
         else
         {
            
-            echo json_encode(array("statusCode"=>201));
+            // echo json_encode(array("statusCode"=>201));
+            return false;
         }
     
     }

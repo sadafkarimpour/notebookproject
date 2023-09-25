@@ -66,9 +66,13 @@ class NoteModel{
         return true;
     }
     
-    public static function find($user_id)
+    public static function find($user_id, $pageIndex, $pageSize)
     {
-        return true;
+        $notes = [];
+        
+        // TODO: fetch data
+
+        return $notes;
     }
 
 

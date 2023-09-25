@@ -70,6 +70,12 @@ $usid=$_SESSION["id"];
             else{
                 $page=1;
             }
+
+            // $notes = NoteModel::find($usid, $page, $num_page);
+
+            // foreach($notes as $note){
+
+            // }
             
             $start_form=($page-1)*$num_page;
             $sql= "SELECT * FROM `addnote` WHERE `user_id`=$usid   LIMIT " .  $start_form . ',' .  $num_page ;  

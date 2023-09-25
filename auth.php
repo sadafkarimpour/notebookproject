@@ -56,14 +56,25 @@ function doLogin(){
     $passwordd= $_POST['passwordd'];
     
    
-    $result = new UserModel();
-    $result->login($email, $passwordd);
+    $user = new UserModel();
+    $result = $user->login($email, $passwordd);
   
+    if($result){
+        echo json_encode([
+            'statusCode'=>200
+        ]);
+        return;
+    }
+
+    echo json_encode([
+        'statusCode'=>201
+    ]);
+
     // Prepare the response as a JSON object
-    $response = array("statusCode" => $result);
+    // $response = array("statusCode" => $result);
   
-    // Return the response as a JSON string
-    echo json_encode($response);
+    // // Return the response as a JSON string
+    // echo json_encode($response);
 
 }
 
@@ -111,6 +122,8 @@ function register(){
  * @return void
  */
 function doRegister(){
+
+    // print_r($_POST);
    
     $fname= $_POST['fname'];
     $lname= $_POST['lname'];
@@ -119,14 +132,18 @@ function doRegister(){
     $email= $_POST['email'];
     $passwordd= $_POST['passwordd'];
   
-    $result = new UserModel();
-    $result->insert($fname, $lname, $username, $phone_number, $email, $passwordd);
+    $user = new UserModel();
+    $user->insert($fname, $lname, $username, $phone_number, $email, $passwordd);
   
     // Prepare the response as a JSON object
-    $response = array("statusCode" => $result);
+    // $response = array("statusCode" => $result);
   
     // Return the response as a JSON string
-    echo json_encode($response);
+    // echo json_encode($response);
+
+    echo json_encode([
+        'code'=>1
+    ]);
 }
 
 // ----------------------------------------------------------------------------
