@@ -10,7 +10,7 @@
 	<div class='alert alert-danger alert-dismissible' id='error' style='display:none;margin-top:50px'>
 	  <a href='#' class='close' data-dismiss='alert' aria-label='close'>×</a>
 	</div>
-<form  method='POST' action='' autocomplete='off' id='signform'>
+<form  method='POST' action='' autocomplete='off' id='loginform'>
     <main>
         <div class=' w-50  bg-dark text-white rounded' style='margin-top:100px;height:300px;padding-top:20px;'>
             <div class='container'>
@@ -50,7 +50,7 @@
 </center>
 <script>
 
-function Login(){
+$(document).ready(function() {
 $('#loginbut').on('click',function(){
       var email=$("#emaillog").val();
       var passwordd=$("#passworddlog").val();
@@ -67,7 +67,7 @@ $('#loginbut').on('click',function(){
           success: function(dataResult){
 					var dataResult = JSON.parse(dataResult);
 					if(dataResult.statusCode==200){
-						location.href = "note.php";						
+						location.href = "note.php?action=index";						
 					}
 					else if(dataResult.statusCode==201){
 						$("#error").show();
@@ -84,7 +84,7 @@ $('#loginbut').on('click',function(){
 		}
     });
 
-};
+});
 </script>
 
 <?php require_once "footer.php"; ?>

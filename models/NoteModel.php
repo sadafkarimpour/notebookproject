@@ -39,9 +39,15 @@ class NoteModel{
     public $datetime_edited;
 
 
-    public static function insert($title,$description,$user_id):bool
+    public static function insertnote($title,$description,$user_id)
     {
-        return true;
+
+
+        require_once 'database.php';
+        $sql="INSERT INTO `addnote` (title,note,user_id) VALUES ('$title','$description','$user_id')";
+        mysqli_query($connect,$sql); 
+        header('location:note.php?action=index');
+
     }
     
     public static function update($id,$title,$description):bool

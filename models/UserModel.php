@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 class UserModel{
     /**
      * شناسه کاربر
@@ -65,7 +65,7 @@ class UserModel{
     public static function login($email,$passwordd)
     {
         require_once "database.php";
-       
+        session_start();
         $email=$_POST['email'];
         $passwordd=$_POST['passwordd'];
         $sqlche= "SELECT * From  `user` WHERE email='$email' and passwordd='$passwordd'";
