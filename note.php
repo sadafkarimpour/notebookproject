@@ -41,11 +41,11 @@ function insert(){
     $usid=$_SESSION["id"];
     $title=$_POST['title'];
     $note=$_POST['note'];
- 
+
     $user = new NoteModel();
-    $res= $user->insertnote($title,$note,$usid);
+    $user->insertnote($title, $note, $usid);
   
-    if($res){
+    if($user){
         echo json_encode([
             'statusCode'=>200
         ]);
@@ -68,7 +68,56 @@ function search(){
 // ----------------------------------------------------------------------------
 
 function edit(){
-    require_once "view/noteEdit.php";
+
+        
+    global $servername;
+    global $username;
+    global $password;
+    global $db_name;
+
+    $connect = mysqli_connect($servername, $username, $password, $db_name);
+    if (!$connect) {
+        die ("Connection Error!".mysqli_connect_error());
+    }
+
+    
+$id=$_POST['id'];
+$query=mysqli_query($connect,"select * from `addnote` where id='$id' ");
+$row=mysqli_fetch_array($query);
+if($row){
+    echo json_encode([
+        'statusCode'=>200
+    ]);
+    return;
+}
+
+echo json_encode([
+    'statusCode'=>201
+]);
+}
+
+// ----------------------------------------------------------------------------
+
+function update(){
+    $id=$_POST['id'];
+    date_default_timezone_set('Asia/Tehran');
+    $date = date('Y-m-d H:i:s'); 
+    $title=$_POST['title'];
+    $note=$_POST['note'];
+
+    $user = new NoteModel();
+    $user->update($id, $title, $note, $date);
+  
+    if($user){
+        echo json_encode([
+            'statusCode'=>200
+        ]);
+        return;
+    }
+
+    echo json_encode([
+        'statusCode'=>201
+    ]);
 }
 
 // ----------------------------------------------------------------------------
@@ -77,7 +126,9 @@ function save(){}
 
 // ----------------------------------------------------------------------------
 
-function delete(){}
+function delete(){
+    
+}
 
 // ----------------------------------------------------------------------------
 
@@ -102,6 +153,10 @@ switch ($action) {
     
     case 'edit':
         edit();
+        break;
+
+    case 'update':
+        update();
         break;
 
     case 'search':

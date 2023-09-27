@@ -97,7 +97,7 @@ function logout(){
     unset($_SESSION["phone_number"]);
     unset($_SESSION["email"]);
     unset($_SESSION["passwordd"]);
-    header('location:indexhome.php');
+    header('location:index.php');
     
 }
 

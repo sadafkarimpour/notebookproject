@@ -18,7 +18,7 @@ $usid=$_SESSION["id"];
 	</div>
 
 
-    <div class="  bg-dark text-white rounded" style='width:1100px;margin-top:70px;height:600px;padding-top:20px;margin-left:220px'>
+    <div class="  bg-dark text-white rounded" style='width:1200px;margin-top:70px;height:650px;padding-top:20px;margin-left:175px'>
     <div class='container-fluid' style="  text-align: center">
     <h2 class="w-100 col-lg-12 col-md-6 col-sm-1 p-1  bg-primary">
         <?php
@@ -28,11 +28,11 @@ $usid=$_SESSION["id"];
     </div>
     <div class='container-fluid' style=" text-align: center;">
     <div class='row'>
-<div class="col-lg-5 col-md-3 col-sm-1 w-50 " >
-       <img  src="<?php echo PATH."hand-holding-pen-concept-illustration.jpg/3255309.jpg"?>" alt="" class="w-100 " style="height: 500px;">
+<div class="col-lg-3 col-md-3 col-sm-1 "  style="width:500px ; height: 600px;">
+       <img  src="<?php echo PATH."hand-holding-pen-concept-illustration.jpg/3255309.jpg"?>" alt="" class="w-100 " style="height: 555px;">
     </div>
   
-    <div  class="col-lg-7 col-md-5 col-sm-3 w-50 h-50 text-white" style="margin-top: -35px">
+    <div  class="col-lg-8 col-md-5 col-sm-3 h-50 text-white" style="margin-top: -30px;width:700px ;">
     <div class="container" >
     <div class="row w-70 h-70" >
         <table>
@@ -55,7 +55,7 @@ $usid=$_SESSION["id"];
 
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-1 p-2 m-2 text-white" >
-                <th style="border:1px solid white ; color:white">حذف / ویرایش</th>
+                <th style="border:1px solid white ; color:white;">حذف / ویرایش</th>
 
                 </div>
                 </tr>
@@ -72,7 +72,7 @@ if (!$connect) {
     die ("Connection Error!".mysqli_connect_error());
 }
 
-            $num_page=5;
+            $num_page=4;
             if(isset($_GET['page'])){
                 $page=$_GET['page'];
             }
@@ -80,36 +80,42 @@ if (!$connect) {
                 $page=1;
             }
 
-            // $notes = NoteModel::find($usid, $page, $num_page);
+            //  $notes = NoteModel::find($usid, $page, $num_page);
 
-            // foreach($notes as $note){
+            //  foreach($notes as $note){
 
-            // }
+          
             
             $start_form=($page-1)*$num_page;
             $sql= "SELECT * FROM `addnote` WHERE `user_id`=$usid   LIMIT " .  $start_form . ',' .  $num_page ;  
             $sql_result=mysqli_query($connect,$sql);
             if (mysqli_num_rows($sql_result)>0){
                 while ($row=mysqli_fetch_assoc($sql_result)) {
-                echo "<tr><div class='col-lg-2 col-md-2 col-sm-1 p-2 m-2'><td>". $row["id"]  . "</td></div><td><div class='col-lg-2 col-md-2 col-sm-1 p-2 m-2'>". $row["datee"] . "</div></td><td><div class='col-lg-2 col-md-2 col-sm-1 p-2 m-2'>". $row["title"]  . "</div></td><td id='scroller'><div class='col-lg-2 col-md-2 col-sm-1 p-2 m-2'>".$row["note"] . 
+                echo "<tr style='border:1px solid white ; color:white;text-align:center;'>
+                <div class='col-lg-2 col-md-2 col-sm-1 p-1 m-2  ' ><td style='border:1px solid white ; color:white;text-align:center;'>". $row["id"]  . "</td></div>
+                <td style='border:1px solid white ; color:white'><div class='col-lg-2 col-md-2 col-sm-1 p-1 m-2 text-justify text-center'>". $row["datee"] . "</div></td>
+                <td style='border:1px solid white ; color:white'><div class='col-lg-2 col-md-2 col-sm-1 p-1 m-2'>". $row["title"]  . "</div></td>
+                <td style='border:1px solid white ; color:white'><div class='col-lg-2 col-md-2 col-sm-1 p-1 m-2'>".$row["note"] . 
                 "</div></td><td>
                 <div class='btn-group'>
              
-                <button class='btn btn-light-blue' id='editbut' onclick='editbut(<?php echo ?id=".$row['id']."?>)'>ویرایش</button>
-                <a class='btn btn-danger' href='./delete.php?id=".$row['id']."'>حذف</a>
+                <button class='btn btn-primary' id='editbut' onclick='editbut(<?php echo ".$row["id"]."?>)'>ویرایش</button>
+                <a class='btn btn-danger' href='delete.php?id=".$row['id']."'>حذف</a>
                 
                 </div>
                 " 
 
                 ."</td></tr>";
-                }
+            }
                 echo "</table>";
-            }
-            else{
-                echo "nothing";
-            }
+           
+           
         
-
+        }
+        else{
+            echo "nothing";
+        }
+ 
         
             ?>
             
@@ -118,13 +124,13 @@ if (!$connect) {
         <?php 
             
             
-            $sql="SELECT * from `addnote` " ;
+            $sql="SELECT * from `addnote` WHERE   `user_id`=$usid  " ;
             $sql_result=mysqli_query($connect,$sql);
             $total=mysqli_num_rows($sql_result);
             $total_pages=ceil($total/$num_page);
 
             for($page=1;$page<=$total_pages;$page++){
-                echo '<a href ="noteindex.php?page=' . $page . '" id="pag">' . $page . ' </a>';
+                echo '<a href ="noteindex.php?page=' . $page . '" class="col-lg-1 mt-5 border border-primary rounded bg-primary text-white" style="margin-right:5px">' . $page . ' </a>';
             }
         
         ?>
@@ -156,6 +162,31 @@ function addnote(){
 
 
     });
+};
+
+function editbut(id){
+    $.ajax({
+          url:"<?php echo PATH?>note.php?action=edit",
+          type:"POST",
+          data:{
+            id:id,
+          },
+  success: function(dataResult){
+            var data = JSON.parse(dataResult);
+            if(data.statusCode==200){
+                location.href = "noteedit.php?id="+id;
+               
+            }
+            else if(data.statusCode==201){
+              $('#error').show();
+              $('#error').html('sth went wronge')
+            }
+        }
+  
+
+
+    });
+
 };
 
 </script>

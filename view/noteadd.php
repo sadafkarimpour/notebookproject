@@ -29,7 +29,7 @@
 <div class="container-fluid" style="margin-left: 180px;">
 <div class="row">
     <button class="btn btn-primary col-lg-6  w-25 p-2 m-1" type="button" name="save" id="save" onclick="savebut();" >Save</button>
-    <button class="btn btn-outline-primary col-lg-6 w-25 p-2 m-1 " type="button" name="return" id="return" onclick="returnbut" >Return</button>
+    <button class="btn btn-outline-primary col-lg-6 w-25 p-2 m-1 " type="button" name="return" id="return" onclick="returnbut();" >Return</button>
 </div>
 </div>
 </div>
@@ -37,7 +37,7 @@
 
 <script>
 function savebut(){
-    $('#save').attr('disabled','disables');
+   // $('#save').attr('disabled','disables');
     var title=$('#title').val();
     var note=$('#note').val();
     if(!title || !note ){
@@ -56,11 +56,12 @@ function savebut(){
         success: function(dataResult){
             var data = JSON.parse(dataResult);
             if(data.statusCode==200){
-                $('#save').removeAttr('disabled');
-                $('#addform').find('input:text').val('');
+              //  $('#save').removeAttr('disabled');
+              //  $('#addform').find('input:text').val('');
                 $('#success').show();
                 $('#success').html('note added successfuly!'); 
                 location.href = "note.php?action=index";
+               
             }
             else if(data.statusCode==201){
               $('#error').show();
@@ -68,6 +69,19 @@ function savebut(){
             }
         }
     });
+}
+
+function returnbut(){
+    $.ajax({
+          url:"<?php echo PATH?>note.php?action=index",
+          type:"GET",
+          success: function(r) 
+  {
+    location.href = "note.php?action=index";
+   
+  },
+});
+
 }
 </script>
 
