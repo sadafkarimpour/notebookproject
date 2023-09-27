@@ -18,21 +18,21 @@ $usid=$_SESSION["id"];
 	</div>
 
 
-    <div class=" w-70 bg-dark text-white rounded" style='margin-top:50px;height:800px;padding-top:20px'>
-    <div class='container w-50 ' style="margin-left:300px ; text-align: center;">
-    <h1 class="w-100 col-lg-12 col-md-6 col-sm-1 p-1 m-3 bg-primary">
+    <div class="  bg-dark text-white rounded" style='width:1100px;margin-top:70px;height:600px;padding-top:20px;margin-left:220px'>
+    <div class='container-fluid' style="  text-align: center">
+    <h2 class="w-100 col-lg-12 col-md-6 col-sm-1 p-1  bg-primary">
         <?php
         echo $usid."یادداشت های";
         ?>
-    </h1>
+    </h2>
     </div>
-    <div class='container'>
+    <div class='container-fluid' style=" text-align: center;">
     <div class='row'>
 <div class="col-lg-5 col-md-3 col-sm-1 w-50 " >
-       <img  src="<?php echo PATH."hand-holding-pen-concept-illustration.jpg/3255309.jpg"?>" alt="" class="w-100 " style="height: ;200px">
+       <img  src="<?php echo PATH."hand-holding-pen-concept-illustration.jpg/3255309.jpg"?>" alt="" class="w-100 " style="height: 500px;">
     </div>
   
-    <div  class="col-lg-7 col-md-5 col-sm-3 w-50 h-50 text-white">
+    <div  class="col-lg-7 col-md-5 col-sm-3 w-50 h-50 text-white" style="margin-top: -35px">
     <div class="container" >
     <div class="row w-70 h-70" >
         <table>
@@ -41,20 +41,20 @@ $usid=$_SESSION["id"];
                 <th style="border:1px solid white ; color:white" >شماره</th>
                 </div>
                
-                <div class="col-lg-2 col-md-2 col-sm-1 p-2 m-2 text-white" style="border:1px solid white ;">
+                <div class="col-lg-2 col-md-2 col-sm-1 p-2 m-2 text-white" >
                 <th  style="border:1px solid white ; color:white">تاریخ</th>
 
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-1 p-2 m-2 text-white" style="border:1px solid white ;">
+                <div class="col-lg-2 col-md-2 col-sm-1 p-2 m-2 text-white">
                 <th style="border:1px solid white ; color:white">عنوان</th>
 
                 </div >
 
-                <div class="col-lg-2 col-md-2 col-sm-1 p-2 m-2 text-white" style="border:1px solid white ;">
+                <div class="col-lg-2 col-md-2 col-sm-1 p-2 m-2 text-white" >
                 <th style="border:1px solid white ; color:white" >متن</th>
 
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-1 p-2 m-2 text-white" style="border:1px solid white ;">
+                <div class="col-lg-2 col-md-2 col-sm-1 p-2 m-2 text-white" >
                 <th style="border:1px solid white ; color:white">حذف / ویرایش</th>
 
                 </div>
@@ -62,7 +62,16 @@ $usid=$_SESSION["id"];
             <?php 
 
          
-            
+global $servername;
+global $username;
+global $password;
+global $db_name;
+
+$connect = mysqli_connect($servername, $username, $password, $db_name);
+if (!$connect) {
+    die ("Connection Error!".mysqli_connect_error());
+}
+
             $num_page=5;
             if(isset($_GET['page'])){
                 $page=$_GET['page'];
@@ -99,7 +108,7 @@ $usid=$_SESSION["id"];
             else{
                 echo "nothing";
             }
-            mysqli_close($connect);
+        
 
         
             ?>
@@ -127,79 +136,27 @@ $usid=$_SESSION["id"];
     </div>
     </div>
      </div>
-     <div  class='w-50 h-50 m-3' >
-        <button class='w-25 col-lg-6 col-md-3 col-sm-1 p-1  btn btn-primary text-white'  type='button'  name='addnew' id='addnew' onclick='addnew();' >Add New</button>
+     <div  class='w-50 h-50 mt-2' >
+        <button    class='w-25 col-lg-6 col-md-3 col-sm-1 p-1  btn btn-primary text-white'  style="margin-left:220px ;" type='button'  name='addnew' id='addnew' onclick="addnote();">Add New</button>
     </div>
 </form>
 
-<!-- add form -->
-<form action="" method="POST" id="addform">
-    <div  class=' w-50  bg-dark text-white rounded' style='margin-top:100px;height:300px;padding-top:20px;'>
-<div class="container ">
-<div class="row">
-<input id="title" type="text" placeholder="عنوان یادداشت" name="data[title]">
-</div>
-</div>
-<div class="container ">
-<div class="row">
-<input id="note" type="text" placeholder="متن یادداشت" name="data[note]">
-</div>
-</div>
-<div class="container ">
-<div class="row">
-    <button class="col-lg-6" type="button" name="save" id="save">Save</button>
-    <button class="col-lg-6" type="button" name="return" id="return">Return</button>
-</div>
-</div>
-</div>
-</form>
 
 <script>
-    $(document).ready(function(){
-       $("#addform").hide();
-       $("#msgform").hide();
-       $("#addnew").on('click',function(){
-        ("#addform").show();
-        $("#save").on('click',function(){
-                $('#save').attr('disabled','disables');
-                var title=$('#title').val();
-                var note=$('#note').val();
-             
+function addnote(){
+    $.ajax({
+          url:"<?php echo PATH?>note.php?action=addnote",
+          type:"GET",
+          success: function(r) 
+  {
+    location.href = "note.php?action=addnote";
+   
+  },
+  
 
-                if(!title || !note){
-                    alert('Please fill all the field !');
-                    return;
-                }
-
-                let url = "<?php echo PATH ?>note.php?action=insert";
-
-                $.ajax({
-                    url:url,
-                    type:'POST',
-                    data:{
-                        title:title,
-                        note:note,
-                    
-                    },
-                    success: function(dataResult){
-                        var data = JSON.parse(dataResult);
-                        if(data.statusCode==200){
-                            $('#save').removeAttr('disabled');
-                            $('#addform').find('input:text').val('');
-                            $('#success').show();
-                            $('#success').html('note addition successfuly done!'); 
-                        }
-                        else if(data.statusCode==201){
-                        $('#error').show();
-                        $('#error').html('sth wronge!')
-                        }
-                    }
-                });
-                });
-        
-       });
 
     });
+};
 
 </script>
 

@@ -1,6 +1,6 @@
 <?php
 
-const PATH = "http://localhost/notebookproject/";
+const PATH = "http://localhost/phpproject-code/notebook1project/";
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 
 $servername="localhost";
 $username="root";
-$password="1234";
+$password="";
 $db_name="phpproject2";
 
 $connect = mysqli_connect($servername, $username, $password, $db_name);

@@ -32,28 +32,37 @@ function index(){
 }
 
 
+function addnote(){
+    require_once "view/noteadd.php";
+}
+
 function insert(){
-    $title= $_POST['title'];
-    $note= $_POST['note'];
-    session_start();
+
     $usid=$_SESSION["id"];
+    $title=$_POST['title'];
+    $note=$_POST['note'];
+ 
+    $user = new NoteModel();
+    $res= $user->insertnote($title,$note,$usid);
   
-    $result = new NoteModel();
-    $result->insertnote($title, $note,$usid);
-  
-    // Prepare the response as a JSON object
-    $response = array("statusCode" => $result);
-  
-    // Return the response as a JSON string
-    echo json_encode($response);
+    if($res){
+        echo json_encode([
+            'statusCode'=>200
+        ]);
+        return;
+    }
+
+    echo json_encode([
+        'statusCode'=>201
+    ]);
    
 }
 
 // ----------------------------------------------------------------------------
 
 function search(){
-    $notes = NoteModel::find(10);
-    echo json_encode($notes);
+    // $notes = NoteModel::find(10);
+    // echo json_encode($notes);
 }
 
 // ----------------------------------------------------------------------------
@@ -83,6 +92,10 @@ switch ($action) {
         index();
         break;
 
+
+    case 'addnote':
+        addnote();
+        break;
     case 'insert':
         insert();
         break;

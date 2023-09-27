@@ -133,7 +133,7 @@ function doRegister(){
     $passwordd= $_POST['passwordd'];
   
     $user = new UserModel();
-    $user->insert($fname, $lname, $username, $phone_number, $email, $passwordd);
+    $result= $user->insert($fname, $lname, $username, $phone_number, $email, $passwordd);
   
     // Prepare the response as a JSON object
     // $response = array("statusCode" => $result);
@@ -141,8 +141,19 @@ function doRegister(){
     // Return the response as a JSON string
     // echo json_encode($response);
 
+    // echo json_encode([
+    //     'code'=>1
+    // ]);
+
+    if($result){
+        echo json_encode([
+            'statusCode'=>200
+        ]);
+        return;
+    }
+
     echo json_encode([
-        'code'=>1
+        'statusCode'=>201
     ]);
 }
 

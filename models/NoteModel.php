@@ -44,9 +44,19 @@ class NoteModel{
 
 
         require_once 'database.php';
+        global $servername;
+        global $username;
+        global $password;
+        global $db_name;
+
+        $connect = mysqli_connect($servername, $username, $password, $db_name);
+        if (!$connect) {
+            die ("Connection Error!".mysqli_connect_error());
+        }
+       
         $sql="INSERT INTO `addnote` (title,note,user_id) VALUES ('$title','$description','$user_id')";
         mysqli_query($connect,$sql); 
-        header('location:note.php?action=index');
+      //  header('location:note.php?action=index');
 
     }
     

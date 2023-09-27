@@ -3,12 +3,14 @@
     ?>
 
 <center>
-<div class='alert alert-success alert-dismissible' id='success' style='display:none;margin-top:50px'>
+<div class=' alert alert-success alert-dismissible ' id='success' style='display:none;margin-top:50px'>
+    <div >
 	  <a href='#' class='close' data-dismiss='alert' aria-label='close'>×</a>
 	</div>
 	<div class='alert alert-danger alert-dismissible' id='error' style='display:none;margin-top:50px'>
 	  <a href='#' class='close' data-dismiss='alert' aria-label='close'>×</a>
 	</div>
+</div>
 <form  method='POST' action='' autocomplete='off' id='signform'>
     <main>
         <div class=' w-50  bg-dark text-white rounded' style='margin-top:100px;height:500px;padding-top:20px;'>
@@ -100,6 +102,7 @@ $(document).ready(function(){
                 $('#signform').find('input:text').val('');
                 $('#success').show();
                 $('#success').html('Registration successful !'); 
+                location.href = "auth.php?action=login";
             }
             else if(data.statusCode==201){
               $('#error').show();
