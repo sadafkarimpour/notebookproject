@@ -76,11 +76,20 @@ class NoteModel{
 
     }
     
-    public static function delete($id):bool
+    public static function delete($id)
     {
+        global $servername;
+        global $username;
+        global $password;
+        global $db_name;
 
+        $connect = mysqli_connect($servername, $username, $password, $db_name);
+        if (!$connect) {
+            die ("Connection Error!".mysqli_connect_error());
+        }
+        mysqli_query($connect,"delete from `addnote` where id='$id' ");
+       
 
-        return true;
     }
     
     public static function findone($id)

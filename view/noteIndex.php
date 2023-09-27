@@ -100,7 +100,7 @@ if (!$connect) {
                 <div class='btn-group'>
              
                 <button class='btn btn-primary' id='editbut' onclick='editbut(<?php echo ".$row["id"]."?>)'>ویرایش</button>
-                <a class='btn btn-danger' href='delete.php?id=".$row['id']."'>حذف</a>
+                <a class='btn btn-danger' href='' onclick='deletebut(<?php echo ".$row["id"]."?>)'>حذف</a>
                 
                 </div>
                 " 
@@ -175,6 +175,31 @@ function editbut(id){
             var data = JSON.parse(dataResult);
             if(data.statusCode==200){
                 location.href = "noteedit.php?id="+id;
+               
+            }
+            else if(data.statusCode==201){
+              $('#error').show();
+              $('#error').html('sth went wronge')
+            }
+        }
+  
+
+
+    });
+
+};
+function deletebut(id){
+    $.ajax({
+          url:"<?php echo PATH?>note.php?action=delete",
+          type:"POST",
+          data:{
+            id:id,
+          },
+  success: function(dataResult){
+            var data = JSON.parse(dataResult);
+            if(data.statusCode==200){
+                $('#success').show();
+                $('#success').html('deleted!'); 
                
             }
             else if(data.statusCode==201){

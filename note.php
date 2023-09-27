@@ -127,7 +127,21 @@ function save(){}
 // ----------------------------------------------------------------------------
 
 function delete(){
+    $id=$_POST['id'];
     
+    $user = new NoteModel();
+    $user->delete($id);
+  
+    if($user){
+        echo json_encode([
+            'statusCode'=>200
+        ]);
+        return;
+    }
+
+    echo json_encode([
+        'statusCode'=>201
+    ]);
 }
 
 // ----------------------------------------------------------------------------
