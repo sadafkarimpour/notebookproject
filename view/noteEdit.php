@@ -2,6 +2,7 @@
 
 require_once 'header.php';
 require_once 'database.php';
+$page=$_GET['page'];
 
 ?>
 
@@ -39,7 +40,6 @@ require_once 'database.php';
 <script>
 function editbut(){
    // $('#save').attr('disabled','disables');
-    var id=$id;
     var title=$('#title').val();
     var note=$('#note').val();
     if(!title || !note ){
@@ -52,7 +52,7 @@ function editbut(){
         type:'POST',
         data:{
 
-            id:id,
+            id:<?php  echo $id?>,
             title:title,
             note:note,  
         },
@@ -64,7 +64,7 @@ function editbut(){
               //  $('#addform').find('input:text').val('');
                 $('#success').show();
                 $('#success').html('note added successfuly!'); 
-                location.href = "note.php?action=index";
+                location.href = "note.php?action=index&page=<?php echo $page?>";
                
             }
             else if(data.statusCode==201){

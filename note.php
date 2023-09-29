@@ -81,19 +81,10 @@ function edit(){
     }
 
     
-$id=$_POST['id'];
+$id=$_GET['id'];
 $query=mysqli_query($connect,"select * from `addnote` where id='$id' ");
 $row=mysqli_fetch_array($query);
-if($row){
-    echo json_encode([
-        'statusCode'=>200
-    ]);
-    return;
-}
-
-echo json_encode([
-    'statusCode'=>201
-]);
+require_once 'view/noteEdit.php';
 }
 
 // ----------------------------------------------------------------------------
@@ -104,6 +95,7 @@ function update(){
     $date = date('Y-m-d H:i:s'); 
     $title=$_POST['title'];
     $note=$_POST['note'];
+   
 
     $user = new NoteModel();
     $user->update($id, $title, $note, $date);
@@ -127,21 +119,21 @@ function save(){}
 // ----------------------------------------------------------------------------
 
 function delete(){
-    $id=$_POST['id'];
+    $id=$_GET['id'];
+    $page=$_GET['page'];
     
     $user = new NoteModel();
     $user->delete($id);
   
     if($user){
-        echo json_encode([
-            'statusCode'=>200
-        ]);
-        return;
+       
+        header("Location: note.php?action=index&page=$page");
+
+       // echo '<script>alert("Note with id('.$page.') Deleted")</script>';
+        exit;
     }
 
-    echo json_encode([
-        'statusCode'=>201
-    ]);
+   
 }
 
 // ----------------------------------------------------------------------------
@@ -171,6 +163,9 @@ switch ($action) {
 
     case 'update':
         update();
+        break;
+    case 'delete':
+        delete();
         break;
 
     case 'search':

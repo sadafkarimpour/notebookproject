@@ -97,7 +97,13 @@ class NoteModel{
         return true;
     }
     
-    public static function find($user_id, $pageIndex, $pageSize)
+    /**
+     * @param int $user_id
+     * @param int $pageIndex
+     * @param int $pageSize
+     * @return NoteModel[]
+     */
+    public static function find($user_id, $pageIndex, $pageSize, &$numRows = 0)
     {
         $notes = [];
 
@@ -112,18 +118,33 @@ class NoteModel{
             die ("Connection Error!".mysqli_connect_error());
         }
 
+        $sql= "SELECT * FROM `addnote` WHERE `user_id`=$user_id";
+
+        // todo .....
+        $sql="SELECT * from `addnote` WHERE   `user_id`=$user_id  " ;
+        $sql_result=mysqli_query($connect,$sql);
+        $total=mysqli_num_rows($sql_result);
+        $total_pages=ceil($total/$pageSize);
+        $numRows = $total_pages;
+
         $start_form=($pageIndex-1)*$pageSize;
         $sql= "SELECT * FROM `addnote` WHERE `user_id`=$user_id   LIMIT " .  $start_form . ',' .  $pageSize ;  
         $sql_result=mysqli_query($connect,$sql);
         if (mysqli_num_rows($sql_result)>0){
-                while ($row=mysqli_fetch_assoc($sql_result)) {
-                    array_push($notes,$row);
-                }
+            while ($row=mysqli_fetch_assoc($sql_result)) {
+                //array_push($notes,$row);
+                $note = new NoteModel();
+                $note->id = $row['id'];
+                $note->title = $row['title'];
+                $note->description=$row['note'];
+                $note->user_id=$row['user_id'];
+                // ... 
+                $note->datetime_created = ($row['datee']);
+               // $note->datetime_edited =($row['datetime_edited']);
+                // ....
+                $notes[] = $note;
             }
-        
-            else{
-                echo "nothing";
-            }
+        }
 
         return $notes;
     }

@@ -80,27 +80,30 @@ if (!$connect) {
                 $page=1;
             }
 
-            //  $notes = NoteModel::find($usid, $page, $num_page);
+            $numRows = 0;
 
-            //  foreach($notes as $note){
+            $notes = NoteModel::find($usid, $page, $num_page, $numRows);
+
+             foreach($notes as $note){
 
           
             
-            $start_form=($page-1)*$num_page;
-            $sql= "SELECT * FROM `addnote` WHERE `user_id`=$usid   LIMIT " .  $start_form . ',' .  $num_page ;  
-            $sql_result=mysqli_query($connect,$sql);
-            if (mysqli_num_rows($sql_result)>0){
-                while ($row=mysqli_fetch_assoc($sql_result)) {
+            // $start_form=($page-1)*$num_page;
+            // $sql= "SELECT * FROM `addnote` WHERE `user_id`=$usid   LIMIT " .  $start_form . ',' .  $num_page ;  
+            // $sql_result=mysqli_query($connect,$sql);
+            // if (mysqli_num_rows($sql_result)>0){
+            //     while ($row=mysqli_fetch_assoc($sql_result)) {
                 echo "<tr style='border:1px solid white ; color:white;text-align:center;'>
-                <div class='col-lg-2 col-md-2 col-sm-1 p-1 m-2  ' ><td style='border:1px solid white ; color:white;text-align:center;'>". $row["id"]  . "</td></div>
-                <td style='border:1px solid white ; color:white'><div class='col-lg-2 col-md-2 col-sm-1 p-1 m-2 text-justify text-center'>". $row["datee"] . "</div></td>
-                <td style='border:1px solid white ; color:white'><div class='col-lg-2 col-md-2 col-sm-1 p-1 m-2'>". $row["title"]  . "</div></td>
-                <td style='border:1px solid white ; color:white'><div class='col-lg-2 col-md-2 col-sm-1 p-1 m-2'>".$row["note"] . 
+                <div class='col-lg-2 col-md-2 col-sm-1 p-1 m-2  ' ><td style='border:1px solid white ; color:white;text-align:center;'>". $note->id  . "</td></div>
+                <td style='border:1px solid white ; color:white'><div class='col-lg-2 col-md-2 col-sm-1 p-1 m-2 text-justify text-center'>".  $note->datetime_created . "</div></td>
+                <td style='border:1px solid white ; color:white'><div class='col-lg-2 col-md-2 col-sm-1 p-1 m-2'>".  $note->title  . "</div></td>
+                <td style='border:1px solid white ; color:white'><div class='col-lg-2 col-md-2 col-sm-1 p-1 m-2'>".  $note->description . 
                 "</div></td><td>
                 <div class='btn-group'>
              
-                <button class='btn btn-primary' id='editbut' onclick='editbut(<?php echo ".$row["id"]."?>)'>ویرایش</button>
-                <a class='btn btn-danger' href='' onclick='deletebut(<?php echo ".$row["id"]."?>)'>حذف</a>
+               
+                <a  class='btn btn-primary' id='editbut' href='" .PATH."/note.php?action=edit&id=".  $note->id."&page=$page'>ویرایش</a>
+                <a class='btn btn-danger' href='" .PATH."/note.php?action=delete&id=".  $note->id."&page=$page'>حذف</a>
                 
                 </div>
                 " 
@@ -111,11 +114,11 @@ if (!$connect) {
            
            
         
-        }
-        else{
-            echo "nothing";
-        }
- 
+        // }
+        // else{
+        //     echo "nothing";
+        // }
+        
         
             ?>
             
@@ -124,13 +127,13 @@ if (!$connect) {
         <?php 
             
             
-            $sql="SELECT * from `addnote` WHERE   `user_id`=$usid  " ;
-            $sql_result=mysqli_query($connect,$sql);
-            $total=mysqli_num_rows($sql_result);
-            $total_pages=ceil($total/$num_page);
+            // $sql="SELECT * from `addnote` WHERE   `user_id`=$usid  " ;
+            // $sql_result=mysqli_query($connect,$sql);
+            // $total=mysqli_num_rows($sql_result);
+            // $total_pages=ceil($total/$num_page);
 
-            for($page=1;$page<=$total_pages;$page++){
-                echo '<a href ="noteindex.php?page=' . $page . '" class="col-lg-1 mt-5 border border-primary rounded bg-primary text-white" style="margin-right:5px">' . $page . ' </a>';
+            for($page=1;$page<=$numRows;$page++){
+                echo '<a href ="note.php?action=index&page=' . $page . '" class="col-lg-1 mt-5 border border-primary rounded bg-primary text-white" style="margin-right:5px">' . $page . ' </a>';
             }
         
         ?>
@@ -164,55 +167,8 @@ function addnote(){
     });
 };
 
-function editbut(id){
-    $.ajax({
-          url:"<?php echo PATH?>note.php?action=edit",
-          type:"POST",
-          data:{
-            id:id,
-          },
-  success: function(dataResult){
-            var data = JSON.parse(dataResult);
-            if(data.statusCode==200){
-                location.href = "noteedit.php?id="+id;
-               
-            }
-            else if(data.statusCode==201){
-              $('#error').show();
-              $('#error').html('sth went wronge')
-            }
-        }
+
   
-
-
-    });
-
-};
-function deletebut(id){
-    $.ajax({
-          url:"<?php echo PATH?>note.php?action=delete",
-          type:"POST",
-          data:{
-            id:id,
-          },
-  success: function(dataResult){
-            var data = JSON.parse(dataResult);
-            if(data.statusCode==200){
-                $('#success').show();
-                $('#success').html('deleted!'); 
-               
-            }
-            else if(data.statusCode==201){
-              $('#error').show();
-              $('#error').html('sth went wronge')
-            }
-        }
-  
-
-
-    });
-
-};
 
 </script>
 
