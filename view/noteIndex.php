@@ -124,19 +124,7 @@ if (!$connect) {
             
             
         </table>
-        <?php 
-            
-            
-            // $sql="SELECT * from `addnote` WHERE   `user_id`=$usid  " ;
-            // $sql_result=mysqli_query($connect,$sql);
-            // $total=mysqli_num_rows($sql_result);
-            // $total_pages=ceil($total/$num_page);
-
-            for($page=1;$page<=$numRows;$page++){
-                echo '<a href ="note.php?action=index&page=' . $page . '" class="col-lg-1 mt-5 border border-primary rounded bg-primary text-white" style="margin-right:5px">' . $page . ' </a>';
-            }
-        
-        ?>
+       
 
           
 </div>
@@ -145,9 +133,54 @@ if (!$connect) {
     </div>
     </div>
      </div>
-     <div  class='w-50 h-50 mt-2' >
-        <button    class='w-25 col-lg-6 col-md-3 col-sm-1 p-1  btn btn-primary text-white'  style="margin-left:220px ;" type='button'  name='addnew' id='addnew' onclick="addnote();">Add New</button>
+     <div class="container" >
+          <div class="row" style="margin-top: 10px">
+
+          <div  class='col-lg-4' >
+        <button    class='w-70 h-70 col-lg-6 col-md-3 col-sm-1 p-1   btn btn-primary text-white' style="margin-left:60px"   type='button'  name='addnew' id='addnew' onclick="addnote();">Add New</button>
     </div>
+          <div class="col-lg-8">
+     <?php 
+            
+       
+            // $sql="SELECT * from `addnote` WHERE   `user_id`=$usid  " ;
+            // $sql_result=mysqli_query($connect,$sql);
+            // $total=mysqli_num_rows($sql_result);
+            // $total_pages=ceil($total/$num_page);
+           $start=1;$end=$numRows;$pre=0;$next=0;
+           echo '<a href ="note.php?action=index&page=' . $start . '" class="col-lg-1 p-2 mt-2  border border-primary rounded-circle bg-primary text-white" style="margin-right:5px;text-decoration:none;margin-left:370px">Start </a>';
+
+               if ($page==$start){
+                $pre=$page;
+               }
+               else{
+                $pre=$page-1;
+               }
+           
+                if ($page==$end){
+                    $next=$end;
+                }
+                else{
+                    $next=$page+1;
+                }
+             
+                echo '<a href ="note.php?action=index&page=' . $pre . '" class="col-lg-1 p-2 mt-2 border border-primary rounded-circle bg-primary text-white" style="margin-right:5px;text-decoration:none">Pre </a>';
+
+                echo '<a href ="note.php?action=index&page=' . $page . '" class="col-lg-1 p-2 mt-2  border border-primary rounded-circle bg-primary text-white" style="margin-right:5px;text-decoration:none">' . $page . ' </a>';
+               
+                echo '<a href ="note.php?action=index&page=' . $next . '" class="col-lg-1 p-2 mt-2 border border-primary rounded-circle  bg-primary text-white" style="margin-right:5px;text-decoration:none">Next</a>';
+
+            
+
+            echo '<a href ="note.php?action=index&page=' . $end . '" class="col-lg-1 p-2 mt-2  border border-primary rounded-circle bg-primary text-white" style="margin-right:5px;text-decoration:none">End</a>';
+      
+        
+        ?>
+        </div>
+    
+
+    </div>
+          </div>
 </form>
 
 

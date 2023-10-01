@@ -1,6 +1,40 @@
 <?php require_once "header.php";
     require_once "database.php";?>
 
+
+
+<style>
+@media (min-width: 1200px) {
+  .textsize {
+    font-size: 15px;
+  }
+}
+@media (max-width: 1199.98px) {
+  .textsize {
+    font-size: 12px;
+  }
+}
+@media (max-width: 599px) {
+  .textsize {
+    font-size: 10px;
+  }
+}
+@media (max-width: 531px) {
+  .textsize {
+    font-size: 8px;
+  }
+}
+/* @media (max-width: 597px) {
+  .textsize {
+    font-size: 10px;
+  }
+}
+@media (max-width: 534px) {
+  .textsize {
+    font-size: 8px;
+  }
+} */
+</style>
 <center>
 
 
@@ -12,7 +46,7 @@
 	</div>
 <form  method='POST' action='' autocomplete='off' id='loginform'>
     <main>
-        <div class=' w-50  bg-dark text-white rounded' style='margin-top:100px;height:300px;padding-top:20px;'>
+        <div class=' w-50 bg-dark text-white rounded' style='margin-top:180px;height:300px;padding-top:20px;'>
             <div class='container'>
                 <div class=' w-50 '>
                     <p  class='col-lg-12 col-md-6 col-sm-1 p-1 m-3'>
@@ -21,25 +55,25 @@
                 </div>
             </div>
     
-            <div  class='row  w-50 m-3'>
-                <input class='col-lg-12 col-md-6 col-sm-1 p-1 w-70 h-50 ' id='emaillog'  type='email' name='data[email]' placeholder='Email'  autocomplete='off'>
+            <div  class='row  w-100 d-flex justify-content-center'>
+                <input class='col-lg-8 col-md-9 col-sm-6 col-8 p-1 mb-3 w-70 h-50 ' id='emaillog'  type='email' name='data[email]' placeholder='Email'  autocomplete='off'>
             </div>
     
-            <div  class='row  w-50 m-3'>
-                <input class='col-lg-12 col-md-6 col-sm-1 p-1 w-70 h-50' id='passworddlog'  type='password' name='data[passwordd]' placeholder='Password'   autocomplete='off'>
+            <div  class='row  w-100 d-flex justify-content-center'>
+                <input class='col-lg-8 col-md-9 col-sm-6 col-8 p-1 mb-3  w-70 h-50' id='passworddlog'  type='password' name='data[passwordd]' placeholder='Password'   autocomplete='off'>
             </div>
     
-            <div  class='row  w-50 m-3'>
-                <button class='col-lg-12 col-md-6 col-sm-1 p-1  btn btn-primary text-white'  type='button'  name='login' id='loginbut' onclick='Login();' >Login</button>
+            <div  class='row  w-100 d-flex justify-content-center'>
+                <button class='col-lg-8 col-md-9 col-sm-6 col-8 p-1 mb-3 w-70  btn btn-primary text-white'  type='button'  name='login' id='loginbut' onclick='Login();' >Login</button>
             </div>
     
-            <div class='container '>
-                <div  class='row d-inline-flex w-50 h-50'>
-                    <div class='col-lg-6 col-md-3 col-sm-1 ' >
-                        <h6 >Not registered??</h6>
+            <div class='container' >
+                <div  class='row  w-100 d-flex justify-content-center'>
+                    <div class='col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-end  ' style="font-size: 15px;" >
+                        <h6 class="textsize" >Not registered?</h6>
                     </div>
-                    <div class='col-lg-6 col-md-3 col-sm-1 ' >
-                        <p >Click here to <a href='<?php echo PATH ?>auth.php?action=register'>Sign Up</a></p>  
+                    <div class='col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-start'  style="font-size: 15px;">
+                        <p class="textsize" >Click here to <a href='<?php echo PATH ?>auth.php?action=register'>Sign Up</a></p>  
                     </div>
                 </div>
             </div>
