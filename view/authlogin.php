@@ -46,6 +46,8 @@
 	</div>
 <form  method='POST' action='' autocomplete='off' id='loginform'>
     <main>
+      <div class="container">
+        <div class="row">
         <div class=' w-50 bg-dark text-white rounded' style='margin-top:180px;height:300px;padding-top:20px;'>
             <div class='container'>
                 <div class=' w-50 '>
@@ -79,6 +81,8 @@
             </div>
  
         </div>
+        </div>
+      </div>
     </main>
 </form>
 </center>
