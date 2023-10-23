@@ -118,7 +118,7 @@ class NoteModel{
             die ("Connection Error!".mysqli_connect_error());
         }
 
-        $sql= "SELECT * FROM `addnote` WHERE `user_id`=$user_id";
+        //$sql= "SELECT * FROM `addnote` WHERE `user_id`=$user_id";
 
         // todo .....
         $sql="SELECT * from `addnote` WHERE   `user_id`=$user_id  " ;
